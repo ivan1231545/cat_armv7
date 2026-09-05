@@ -43,7 +43,7 @@ Ensure the binary is executed on an ARMv7-compatible system. On x86_64 hosts, yo
 ```bash
 qemu-arm -L /usr/arm-linux-gnueabihf ./cat_armv7 somefile.txt
 ```
-###How It Works
+### How It Works
 
 The program performs the following steps:
 
