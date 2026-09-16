@@ -57,6 +57,7 @@ err_noarg:
     mov r0, #1
     ldr r1, =noarg_text
     ldr r2, =len_noarg_text
+    ldr r2, [r2]
     swi #0
 
     b err
@@ -65,15 +66,22 @@ err_nofile:
     mov r0, #1
     ldr r1, =nofile_text
     ldr r2, =len_nofile_text
+    ldr r2, [r2]
     swi #0
 
     b err
+
+.ltorg
+
 .data
+.balign 4
 buffer:
     .space 2048
 noarg_text:
     .ascii "No input files!\n"
-len_noarg_text = . - noarg_text
+len_noarg_text:
+    .word . - noarg_text
 nofile_text:
     .ascii "File not found!\n"
-len_nofile_text = . - nofile_text
+len_nofile_text:
+    .word . - nofile_text
